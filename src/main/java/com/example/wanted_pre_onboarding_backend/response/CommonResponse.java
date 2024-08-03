@@ -1,5 +1,6 @@
 package com.example.wanted_pre_onboarding_backend.response;
 
+import com.example.wanted_pre_onboarding_backend.response.status.SuccessCode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,25 +9,22 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class CommonResponse<T> {
-    private int statusCode;
-    private String responseMessage;
+    private SuccessCode successCode;
     private T data;
 
-    public CommonResponse(final int statusCode, final String responseMessage) {
-        this.statusCode = statusCode;
-        this.responseMessage = responseMessage;
+    public CommonResponse(SuccessCode statusCode) {
+        this.successCode = statusCode;
         this.data = null;
     }
 
-    public static<T> CommonResponse<T> res(final int statusCode, final String responseMessage) {
-        return res(statusCode, responseMessage, null);
+    public static<T> CommonResponse<T> res(SuccessCode statusCode) {
+        return res(statusCode, null);
     }
 
-    public static<T> CommonResponse<T> res(final int statusCode, final String responseMessage, final T data) {
+    public static<T> CommonResponse<T> res(SuccessCode successCode, final T data) {
         return CommonResponse.<T>builder()
                 .data(data)
-                .statusCode(statusCode)
-                .responseMessage(responseMessage)
+                .successCode(successCode)
                 .build();
     }
 }
