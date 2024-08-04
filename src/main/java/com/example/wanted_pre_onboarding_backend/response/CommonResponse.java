@@ -12,12 +12,7 @@ public class CommonResponse<T> {
     private SuccessCode successCode;
     private T data;
 
-    public CommonResponse(SuccessCode statusCode) {
-        this.successCode = statusCode;
-        this.data = null;
-    }
-
-    public static<T> CommonResponse<T> res(SuccessCode statusCode) {
+    public static<T> CommonResponse<T> res(SuccessCode statusCode) { // 기본 생성자
         return res(statusCode, null);
     }
 

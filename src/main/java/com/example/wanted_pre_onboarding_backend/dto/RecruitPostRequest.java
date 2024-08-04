@@ -14,16 +14,24 @@ public class RecruitPostRequest {
     private String description;
     private String skills;
 
-    public RecruitPost toEntity(){
-        return RecruitPost.builder()
-                .companyId(companyId)
-                .companyName(companyName)
-                .nation(nation)
-                .region(region)
-                .position(position)
-                .reward(reward)
-                .description(description)
-                .skills(skills)
-                .build();
+    @Data
+    public class RegisterPost { // 채용공고 등록
+        private int companyId;
+        private String nation;
+        private String region;
+        private String position;
+        private int reward;
+        private String description;
+        private String skills;
+    }
+
+    @Data
+    public class UpdatePost { // 채용공고 수정
+        private String nation;
+        private String region;
+        private String position;
+        private int reward;
+        private String description;
+        private String skills;
     }
 }

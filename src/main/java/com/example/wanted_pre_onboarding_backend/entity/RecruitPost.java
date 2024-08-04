@@ -1,26 +1,24 @@
 package com.example.wanted_pre_onboarding_backend.entity;
 
+import com.example.wanted_pre_onboarding_backend.dto.RecruitPostRequest;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 
 @Entity
-@Builder
+@Getter @Builder
 @Table (name = "recruitPost")
 @NoArgsConstructor
 @AllArgsConstructor
+@DynamicUpdate
 public class RecruitPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "postId", unique = true, nullable = false)
     private int postId; // 채용공고 id
-
-    @Column(name = "companyId", nullable = false)
-    private int companyId; // 회사 id
-
-    @Column(name = "companyName", length = 100, nullable = false)
-    private String companyName; // 회사명
 
     @Column(name = "nation", length = 100, nullable = false)
     private String nation; // 국가
@@ -34,9 +32,31 @@ public class RecruitPost {
     @Column(name = "reward", nullable = false)
     private int reward; // 채용보상금
 
-    @Column(name = "description", length = 300)
+    @Column(name = "description", length = 300,  nullable = false)
     private String description; // 채용 내용
 
-    @Column(name = "skills", length = 100)
+    @Column(name = "skills", length = 100,  nullable = false)
     private String skills; // 사용기술
+
+    @ManyToOne
+    @JoinColumn(name = "companyId")
+    private Company company;
+
+//    public void updateRecruitPost(RecruitPostRequest.UpdatePost request) {
+//        if (request.getNation() != null) this.nation = request.getNation();
+//        if (request.getRegion() != null) this.region = request.getRegion();
+//        if (request.getPosition() != null) this.position = request.getPosition();
+//        if (request.getReward() != 0) this.reward = request.getReward();
+//        if (request.getDescription() != null) this.description = request.getDescription();
+//        if (request.getSkills() != null) this.skills = request.getSkills();
+//    }
+
+    public void updateRecruitPost(RecruitPostRequest.UpdatePost request) {
+        this.nation = request.getNation();
+        this.region = request.getRegion();
+        this.position = request.getPosition();
+        this.reward = request.getReward();
+        this.description = request.getDescription();
+        this.skills = request.getSkills();
+    }
 }
