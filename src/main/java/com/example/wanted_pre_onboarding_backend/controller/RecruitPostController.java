@@ -53,4 +53,8 @@ public class RecruitPostController {
         return CommonResponse.res(SuccessCode.DELETE_SUCCESS);
     }
 
+    @GetMapping("/search")
+    public CommonResponse search(@RequestParam String keyword) {
+        return  CommonResponse.res(SuccessCode.SEARCH_SUCCESS, recruitPostService.search(keyword));
+    }
 }

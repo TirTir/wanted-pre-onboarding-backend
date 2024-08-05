@@ -96,4 +96,9 @@ public class RecruitPostService {
 
         recruitPostRepository.delete(recruitPost);
     }
+
+    @Transactional
+    public List<RecruitPost> search(String keyword) {
+        return recruitPostRepository.searchByKeyword(keyword);
+    }
 }
