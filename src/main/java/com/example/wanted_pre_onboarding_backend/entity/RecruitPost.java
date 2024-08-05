@@ -9,6 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter @Builder
 @Table (name = "recruitPost")
@@ -43,6 +46,9 @@ public class RecruitPost {
     @JoinColumn(name = "companyId")
     @JsonBackReference
     private Company company;
+
+    @OneToMany(mappedBy = "recruitPost", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<User> users = new ArrayList<>();
 
     public void updateRecruitPost(RecruitPostRequest.UpdatePost request) {
         if (request.getNation() != null) this.nation = request.getNation();

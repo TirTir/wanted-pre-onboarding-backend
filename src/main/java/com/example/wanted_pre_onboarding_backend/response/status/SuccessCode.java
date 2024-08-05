@@ -11,7 +11,8 @@ public enum SuccessCode {
     FETCH_SINGLE_SUCCESS(HttpStatus.OK, "채용 공고 조회 성공"),
     REGISTER_SUCCESS(HttpStatus.OK, "채용 공고 등록 성공"),
     UPDATE_SUCCESS(HttpStatus.OK, "채용 공고 수정 성공"),
-    DELETE_SUCCESS(HttpStatus.OK, "채용 공고 삭제 성공");
+    DELETE_SUCCESS(HttpStatus.OK, "채용 공고 삭제 성공"),
+    APPLY_SUCCESS(HttpStatus.OK, "채용 공고 지원 성공");
 
     private final HttpStatus status;
     private final String message;
