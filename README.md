@@ -3,6 +3,7 @@
 <br>
 
 ## ✨ Entity Diagram
+<img width="767" alt="image" src="https://github.com/user-attachments/assets/56a5b15f-54b0-4b92-86b3-48eead96e18c">
 
 <br>
 <br>
