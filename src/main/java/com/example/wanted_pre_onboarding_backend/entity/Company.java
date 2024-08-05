@@ -1,5 +1,6 @@
 package com.example.wanted_pre_onboarding_backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,5 +25,6 @@ public class Company {
     private String companyName; // 회사명
 
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<RecruitPost> recruitPosts = new ArrayList<>();
 }

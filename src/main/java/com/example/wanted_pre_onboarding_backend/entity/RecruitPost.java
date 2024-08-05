@@ -1,6 +1,7 @@
 package com.example.wanted_pre_onboarding_backend.entity;
 
 import com.example.wanted_pre_onboarding_backend.dto.RecruitPostRequest;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,23 +41,15 @@ public class RecruitPost {
 
     @ManyToOne
     @JoinColumn(name = "companyId")
+    @JsonBackReference
     private Company company;
 
-//    public void updateRecruitPost(RecruitPostRequest.UpdatePost request) {
-//        if (request.getNation() != null) this.nation = request.getNation();
-//        if (request.getRegion() != null) this.region = request.getRegion();
-//        if (request.getPosition() != null) this.position = request.getPosition();
-//        if (request.getReward() != 0) this.reward = request.getReward();
-//        if (request.getDescription() != null) this.description = request.getDescription();
-//        if (request.getSkills() != null) this.skills = request.getSkills();
-//    }
-
     public void updateRecruitPost(RecruitPostRequest.UpdatePost request) {
-        this.nation = request.getNation();
-        this.region = request.getRegion();
-        this.position = request.getPosition();
-        this.reward = request.getReward();
-        this.description = request.getDescription();
-        this.skills = request.getSkills();
+        if (request.getNation() != null) this.nation = request.getNation();
+        if (request.getRegion() != null) this.region = request.getRegion();
+        if (request.getPosition() != null) this.position = request.getPosition();
+        if (request.getReward() != 0) this.reward = request.getReward();
+        if (request.getDescription() != null) this.description = request.getDescription();
+        if (request.getSkills() != null) this.skills = request.getSkills();
     }
 }

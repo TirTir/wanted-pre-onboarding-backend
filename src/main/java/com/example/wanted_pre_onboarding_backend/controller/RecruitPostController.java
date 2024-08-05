@@ -22,18 +22,30 @@ public class RecruitPostController {
         this.recruitPostService = recruitPostService;
     }
 
+    @GetMapping("")
+    public CommonResponse getList(){
+        return CommonResponse.res(SuccessCode.FETCH_SUCCESS, recruitPostService.getRecruitPosts());
+    }
+
     @PostMapping("/register")
     public CommonResponse register(@RequestBody RecruitPostRequest.RegisterPost request){
-        logger.info("request -  companyId: " + request.getCompanyId());
+        logger.info("request -  companyId: {}", request.getCompanyId());
         recruitPostService.register(request);
         return CommonResponse.res(SuccessCode.REGISTER_SUCCESS);
     }
 
     @PostMapping("/update/{postId}")
     public CommonResponse update(@PathVariable int postId, @RequestBody RecruitPostRequest.UpdatePost request){
-        logger.info("request -  postId: " + postId);
+        logger.info("request -  postId: {}", postId);
         recruitPostService.update(postId, request);
         return CommonResponse.res(SuccessCode.UPDATE_SUCCESS);
+    }
+
+    @DeleteMapping(value = "")
+    public CommonResponse delete(@RequestBody RecruitPostRequest.DeletePost request) {
+        logger.info("request -  postId: {}", request.getPostId());
+        recruitPostService.delete(request);
+        return CommonResponse.res(SuccessCode.DELETE_SUCCESS);
     }
 
 }

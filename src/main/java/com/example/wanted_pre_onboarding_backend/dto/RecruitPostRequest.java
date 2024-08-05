@@ -15,7 +15,7 @@ public class RecruitPostRequest {
     private String skills;
 
     @Data
-    public class RegisterPost { // 채용공고 등록
+    public static class RegisterPost { // 채용공고 등록
         private int companyId;
         private String nation;
         private String region;
@@ -26,12 +26,17 @@ public class RecruitPostRequest {
     }
 
     @Data
-    public class UpdatePost { // 채용공고 수정
+    public static class UpdatePost { // 채용공고 수정
         private String nation;
         private String region;
         private String position;
         private int reward;
         private String description;
         private String skills;
+    }
+
+    @Data
+    public static class DeletePost { // 채용공고 삭제
+        private int postId;
     }
 }

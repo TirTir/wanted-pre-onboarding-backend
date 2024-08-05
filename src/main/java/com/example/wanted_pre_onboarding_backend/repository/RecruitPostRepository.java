@@ -7,6 +7,4 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RecruitPostRepository extends JpaRepository<RecruitPost, Integer> {
-    List<RecruitPost> findAll(); // 채용공고 전체 검색
-    Optional<RecruitPost> findById(int id);
 }
