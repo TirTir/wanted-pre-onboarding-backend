@@ -24,8 +24,5 @@ logging:
   level:
     root: info
     org:
-      hibernate: debug
-      web: debug
-#      springframework:
-#        orm: trace
-#        jdbc: trace
+      hibernate: info
+      web: info

@@ -1,6 +1,5 @@
 package com.example.wanted_pre_onboarding_backend.dto;
 
-import com.example.wanted_pre_onboarding_backend.entity.RecruitPost;
 import lombok.Data;
 
 @Data

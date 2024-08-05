@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @RestController
-@RequestMapping("/wanted")
+@RequestMapping({"/wanted", "/wanted/"})
 public class RecruitPostController {
     private final RecruitPostService recruitPostService;
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -24,7 +24,12 @@ public class RecruitPostController {
 
     @GetMapping("")
     public CommonResponse getList(){
-        return CommonResponse.res(SuccessCode.FETCH_SUCCESS, recruitPostService.getRecruitPosts());
+        return CommonResponse.res(SuccessCode.FETCH_SUCCESS, recruitPostService.getList());
+    }
+
+    @GetMapping("/detail/{postId}")
+    public CommonResponse getDetail(@PathVariable int postId){
+        return CommonResponse.res(SuccessCode.FETCH_SINGLE_SUCCESS, recruitPostService.getDetail(postId));
     }
 
     @PostMapping("/register")
